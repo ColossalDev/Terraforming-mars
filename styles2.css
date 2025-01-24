@@ -50,6 +50,17 @@ input {
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="number"] {
+  text-align: center;
+}
+
+input:focus {
+  /* background-color: orange; */
+  border-color: black;
 }
 
 .input-container {

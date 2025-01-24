@@ -110,6 +110,9 @@ function confirmName() {
   if (typeof nameChoice === "string" && nameChoice.length === 0) {
     // errorDiv.classList.remove("hide");
     // errorDiv.innerHTML = `Please add a name`;
+
+    // Error message and text colour change in input box
+
     const root = document.documentElement;
     console.log(root);
 
@@ -183,6 +186,7 @@ function elementFromHtml(html) {
 }
 
 function addClickableScores() {
+  // loop over players and add click events to all score boxes
   let clickPlayerScore = Array.from(playerScores);
 
   clickPlayerScore.forEach(function (clickableScore) {
@@ -219,17 +223,18 @@ function addScoreToHTML(e) {
   let background = compStyles.getPropertyValue("background-color");
   console.log(background);
 
-  // if (background === "rgba(0, 0, 0, 0)" || background === "rgb(255, 255, 0") {
-  //   let svg = document.querySelector("svg");
-  //   console.log(svg);
-  //   svg.classList.add("white-svg");
-  // }
+  if (background === "rgba(0, 0, 0, 0)" || background === "rgb(255, 255, 0") {
+    let svg = document.querySelector("svg");
+    console.log(svg);
+    svg.classList.add("white-svg");
+  }
 
   // // Reset svg colour back to black
-  // let svg = document.querySelector("svg");
-  // console.log(svg);
-  // svg.classList.remove("white-svg");
-  // svg.classList.add("black-svg");
+  let svg = document.querySelector("svg");
+  console.log(svg);
+  svg.classList.remove("white-svg");
+  svg.classList.add("black-svg");
+  console.log(svg);
 
   playerHtml.focus();
   checkIcon.addEventListener;
@@ -259,6 +264,7 @@ function displayNumber(e) {
 
   // re-add event listener to score boxes
   addClickableScores();
+  console.log(target);
 
   updateTotal(target);
 }
@@ -283,6 +289,13 @@ function confirmNumber(scoreNumber) {
 function updateTotal(target) {
   playerScoreContainer = document.querySelector(".score-container");
   playerInfo = document.querySelector(".player-info-container");
+
+  // Work out what player has been clicked on to update correct total
+
+  const element = target;
+  const compStyles = window.getComputedStyle(element);
+  let background = compStyles.getPropertyValue("background-color");
+  console.log(background);
 
   score = target.textContent;
   console.log(target);
@@ -344,6 +357,8 @@ function reset() {
 }
 
 function reset() {
+  console.log(players);
+
   console.log(nameElement.placeholder instanceof Element);
 }
 
