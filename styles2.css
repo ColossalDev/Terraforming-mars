@@ -150,6 +150,11 @@ input {
   text-align: center;
 }
 
+.headers,
+.name {
+  font-size: 12px;
+}
+
 .hide {
   display: none;
 }
