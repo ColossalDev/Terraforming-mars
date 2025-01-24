@@ -44,22 +44,6 @@ function Player(
   this.total = total;
 }
 
-// function Player(player, name, colour, ...scores) {
-//   this.player = player;
-//   this.name = name;
-//   this.colour = colour;
-//   this.scores = new Scores(...scores);
-// }
-
-// function Scores(tr, awards, milestones, board, cards, total) {
-//   this.tr = tr;
-//   this.awards = awards;
-//   this.milestones = milestones;
-//   this.board = board;
-//   this.cards = cards;
-//   this.total = total;
-// }
-
 // Event listeners for Reset, Finish, Restart
 
 const resetBtn = document.querySelector(".reset-btn");
