@@ -41,8 +41,8 @@ img {
   padding-top: 10px;
 }
 .player-input-header {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 input {
@@ -100,7 +100,7 @@ input {
 .main-container {
   display: flex;
   height: 50vh;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .header-container {
