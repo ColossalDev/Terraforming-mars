@@ -100,7 +100,7 @@ input {
 .main-container {
   display: flex;
   height: 50vh;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .header-container {
