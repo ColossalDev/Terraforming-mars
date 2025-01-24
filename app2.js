@@ -48,11 +48,6 @@ function Player(
 
 const resetBtn = document.querySelector(".reset-btn");
 resetBtn.addEventListener("click", reset);
-const finishBtn = document.querySelector(".finish-btn");
-finishBtn.addEventListener("click", finishSetup);
-const restartBtn = document.querySelector(".restart-btn");
-restartBtn.addEventListener("click", restart);
-restartBtn.classList.add("hide");
 
 // Event Listener for picking colour choice
 
@@ -360,13 +355,4 @@ function reset() {
   console.log(players);
 
   console.log(nameElement.placeholder instanceof Element);
-}
-
-function finishSetup() {
-  playerEntry.classList.add("hide");
-  restartBtn.classList.remove("hide");
-}
-function restart() {
-  playerEntry.classList.remove("hide");
-  restartBtn.classList.add("hide");
 }
