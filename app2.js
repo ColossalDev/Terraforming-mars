@@ -241,6 +241,10 @@ function displayNumber(e) {
   let numberInput = document.querySelector(".number-input");
 
   scoreNumber = numberInput.value;
+
+  if (scoreNumber == "") {
+    scoreNumber = 0;
+  }
   // let score = scoreNumber;
 
   confirmNumber(scoreNumber);
@@ -281,6 +285,9 @@ function updateTotal(target) {
   playerInfo = document.querySelector(".player-info-container");
 
   score = target.textContent;
+  console.log(target);
+  console.log(player);
+
   let = parsedScore = parseInt(score);
   console.log(parsedScore);
 

@@ -27,6 +27,19 @@ body {
   font-style: normal;
 }
 
+.img-container {
+  width: 100vw;
+  height: 15vh;
+}
+
+img {
+  width: 100vw;
+  height: 15vh;
+}
+
+.player-header {
+  padding-top: 10px;
+}
 .player-input-header {
   padding-top: 30px;
   padding-bottom: 30px;
