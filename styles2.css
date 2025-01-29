@@ -184,7 +184,7 @@ svg {
   width: 30px;
 }
 
-@media (min-width: 450px) {
+/* @media (min-width: 450px) {
   .colour {
     display: inline-block;
     width: 40px;
@@ -275,4 +275,4 @@ svg {
     height: 20px;
     width: 20px;
   }
-}
+} */

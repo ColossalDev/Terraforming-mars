@@ -22,6 +22,8 @@ let error = false;
 let playerColour = "";
 let clickPlayerScore = [];
 
+// Set up Player Object
+
 function Player(
   player,
   name,
@@ -44,7 +46,7 @@ function Player(
   this.total = total;
 }
 
-// Event listeners for Reset, Finish, Restart
+// Event listeners for Reset
 
 const resetBtn = document.querySelector(".reset-btn");
 resetBtn.addEventListener("click", reset);
@@ -58,56 +60,62 @@ colourElements.forEach(function (colourElement) {
 // Functions
 
 function pickColour(e) {
+  // Check name box is filled and error without adding HTML for player
   confirmName();
+
   if (error) {
     return;
   } else {
+    // Retrieve colour of box that was chosen and
     const element = e.target;
     const compStyles = window.getComputedStyle(element);
 
     let background = compStyles.getPropertyValue("background-color");
 
     if (background === "rgb(255, 0, 0)") {
-      confirmName();
+      // confirmName();
       playerColour = "red";
       element.classList.add("hide");
       createPlayer();
     } else if (background === "rgb(255, 255, 0)") {
-      confirmName();
+      // confirmName();
       playerColour = "yellow";
       element.classList.add("hide");
       createPlayer();
     } else if (background === "rgb(0, 128, 0)") {
-      confirmName();
+      // confirmName();
       playerColour = "green";
       element.classList.add("hide");
       createPlayer();
     } else if (background === "rgb(0, 0, 255)") {
-      confirmName();
+      // confirmName();
       playerColour = "blue";
       element.classList.add("hide");
       createPlayer();
     } else if (background === "rgb(0, 0, 0)") {
-      confirmName();
+      // confirmName();
       playerColour = "black";
       element.classList.add("hide");
       createPlayer();
     } else {
     }
+    // Reset to the placeholder value in input field.
     nameElement.value = "";
     return playerColour;
   }
 }
 
 function confirmName() {
+  // assign name value to nameChoice
+
   nameChoice = nameElement.value;
+
   // Check text exists in player name input and error if none exists
+
   if (typeof nameChoice === "string" && nameChoice.length === 0) {
-    // errorDiv.classList.remove("hide");
-    // errorDiv.innerHTML = `Please add a name`;
+    // If name does not exist then Error message with RED text colour change in input box
 
-    // Error message and text colour change in input box
-
+    //Change input placeholder colour to Red and then back to black after 2 seconds
     const root = document.documentElement;
     console.log(root);
 
@@ -124,9 +132,6 @@ function confirmName() {
 
     setTimeout(display, 2000);
     function display() {
-      // errorDiv.classList.add("hide");
-      // errorDiv.innerHTML = "";
-
       const root = document.documentElement;
       const currentColour = getComputedStyle(root).getPropertyValue(
         "--placeholder-color"
@@ -211,25 +216,26 @@ function addScoreToHTML(e) {
   targetElement.appendChild(playerHtml);
   targetElement.appendChild(checkIconContainer);
   targetElement.appendChild(checkIcon);
-  console.log(e.target);
 
-  const element = e.target;
-  const compStyles = window.getComputedStyle(element);
-  let background = compStyles.getPropertyValue("background-color");
-  console.log(background);
+  // Set svg colour to white if background is black or
 
-  if (background === "rgba(0, 0, 0, 0)" || background === "rgb(255, 255, 0") {
-    let svg = document.querySelector("svg");
-    console.log(svg);
-    svg.classList.add("white-svg");
-  }
+  // const element = e.target;
+  // const compStyles = window.getComputedStyle(element);
+  // let background = compStyles.getPropertyValue("background-color");
+  // console.log(background);
+
+  // if (background === "rgba(0, 0, 0, 0)" || background === "rgb(255, 255, 0") {
+  //   let svg = document.querySelector("svg");
+  //   console.log(svg);
+  //   svg.classList.add("white-svg");
+  // }
 
   // // Reset svg colour back to black
-  let svg = document.querySelector("svg");
-  console.log(svg);
-  svg.classList.remove("white-svg");
-  svg.classList.add("black-svg");
-  console.log(svg);
+  // let svg = document.querySelector("svg");
+  // console.log(svg);
+  // svg.classList.remove("white-svg");
+  // svg.classList.add("black-svg");
+  // console.log(svg);
 
   playerHtml.focus();
   checkIcon.addEventListener;
@@ -259,7 +265,6 @@ function displayNumber(e) {
 
   // re-add event listener to score boxes
   addClickableScores();
-  console.log(target);
 
   updateTotal(target);
 }
@@ -282,59 +287,82 @@ function confirmNumber(scoreNumber) {
 }
 
 function updateTotal(target) {
+  // total score on correct player
+
   playerScoreContainer = document.querySelector(".score-container");
-  playerInfo = document.querySelector(".player-info-container");
+
+  currentlyTargetedPlayer = target.parentElement.firstElementChild.textContent;
+  console.log(currentlyTargetedPlayer);
+
+  scores = Array.from(playerScoreContainer.childNodes);
 
   // Work out what player has been clicked on to update correct total
 
-  const element = target;
-  const compStyles = window.getComputedStyle(element);
-  let background = compStyles.getPropertyValue("background-color");
-  console.log(background);
+  // Loop over current players in players array and amend the score in object
 
-  score = target.textContent;
-  console.log(target);
-  console.log(player);
+  for (let i = 0; i < players.length; i++) {
+    currentPlayer = players[i].name;
+    console.log(players[i].name);
+    // when correct name in array is matched to currently targeted player
+    if (currentlyTargetedPlayer == currentPlayer) {
+      let score = target.textContent;
 
-  let = parsedScore = parseInt(score);
-  console.log(parsedScore);
+      let = parsedScore = parseInt(score);
 
-  players.forEach(function () {
-    if (target.classList.contains("tr")) {
-      player.tr = parsedScore;
+      // add score in target box to relevant object property
+
+      if (target.classList.contains("tr")) {
+        players[i].tr = parsedScore;
+      }
+      if (target.classList.contains("awards")) {
+        players[i].awards = parsedScore;
+      }
+      if (target.classList.contains("milestones")) {
+        players[i].milestones = parsedScore;
+      }
+      if (target.classList.contains("board")) {
+        players[i].board = parsedScore;
+      }
+      if (target.classList.contains("cards")) {
+        players[i].cards = parsedScore;
+      }
+      total =
+        Number(players[i].tr) +
+        Number(players[i].awards) +
+        Number(players[i].milestones) +
+        Number(players[i].board) +
+        Number(players[i].cards);
+
+      players[i].total = total;
+
+      // make sure it displays a 0 if it is not a number
+
+      if (total === NaN) {
+        total = 0;
+      }
+
+      console.log(players);
+
+      // Find the score container that matches the player and add score text content
+
+      let currentTotalTarget = Array.from(playerInfo.childNodes);
+
+      for (let i = 0; i < currentTotalTarget.length; i++) {
+        console.log(currentTotalTarget);
+        console.log(currentTotalTarget[i].firstElementChild.textContent);
+        console.log(currentTotalTarget[i].childNodes[0].textContent);
+        console.log(currentTotalTarget[i].childNodes[6].textContent);
+        console.log(currentlyTargetedPlayer);
+
+        if (
+          currentTotalTarget[i].childNodes[0].textContent ==
+          currentlyTargetedPlayer
+        ) {
+          currentTotalTarget[i].childNodes[6].textContent = total;
+        }
+      }
     }
-    if (target.classList.contains("awards")) {
-      player.awards = parsedScore;
-    }
-    if (target.classList.contains("milestones")) {
-      player.milestones = parsedScore;
-    }
-    if (target.classList.contains("board")) {
-      player.board = parsedScore;
-    }
-    if (target.classList.contains("cards")) {
-      player.cards = parsedScore;
-    }
-    total =
-      Number(player.tr) +
-      Number(player.awards) +
-      Number(player.milestones) +
-      Number(player.board) +
-      Number(player.cards);
-
-    player.total = total;
-
-    if (total === NaN) {
-      total = 0;
-    }
-
-    let currentTotalTarget = Array.from(playerInfo.childNodes);
-    console.log(currentTotalTarget);
-
-    console.log(playerCount);
-
-    currentTotalTarget[playerCount - 1].childNodes[6].textContent = total;
-  });
+  }
 }
 
 function reset() {
@@ -352,7 +380,9 @@ function reset() {
 }
 
 function reset() {
-  console.log(players);
+  console.log(player);
+
+  console.log(playerColour);
 
   console.log(nameElement.placeholder instanceof Element);
 }
