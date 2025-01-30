@@ -59,6 +59,15 @@ colourElements.forEach(function (colourElement) {
 
 // Functions
 
+// ****** LOCAL STORAGE **********
+
+// function addToLocalStorage(player) {
+//   // let players = getLocalStorage();
+//   console.log(player);
+
+//   localStorage.setItem("players", JSON.stringify(players));
+// }
+
 function pickColour(e) {
   // Check name box is filled and error without adding HTML for player
   confirmName();
@@ -153,6 +162,11 @@ function createPlayer() {
   colour = playerColour;
   player = new Player(playerCount, playerName, colour, 0, 0, 0, 0, 0, 0);
   players.push(player);
+  console.log(player);
+  console.log(players);
+
+  // addToLocalStorage(player);
+
   addPlayerHTML();
 
   if (playerCount == 5) {
@@ -366,6 +380,7 @@ function updateTotal(target) {
 }
 
 function reset() {
+  // Empty players array
   players = [];
   console.log(players);
   // Reset player Count
@@ -377,12 +392,4 @@ function reset() {
 
     colourElement.addEventListener("click", pickColour);
   });
-}
-
-function reset() {
-  console.log(player);
-
-  console.log(playerColour);
-
-  console.log(nameElement.placeholder instanceof Element);
 }
